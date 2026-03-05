@@ -7,7 +7,11 @@ return {
             style = "warmer",
             colors = {
                 fg = "#e6e6e6",
-                bg0 = "#0d0d11",
+                bg0 = "#1F1F1F",
+            },
+
+            code_style = {
+                comments = 'none',
             },
         })
 
