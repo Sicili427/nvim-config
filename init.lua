@@ -2,14 +2,17 @@
 -------------- NEOVIM OPTIONS ----------------
 ----------------------------------------------
 
------------ Settings On Startup --------------
-require("sicili.core.options")
+-- Sets Keymap Leader
+vim.g.mapleader = ' '
+
+------------ Lazy.nvim Startup ---------------
+require("sicili.core.lazy")
 
 ----------- Keymaps On Startup ---------------
 require("sicili.core.keymaps")
 
------------- Lazy.nvim Startup ---------------
-require("sicili.core.lazy")
+----------- Settings On Startup --------------
+require("sicili.core.options")
 
 ------- Enable Treesitter Highlighting -------
 vim.api.nvim_create_autocmd('FileType', {
