@@ -18,6 +18,9 @@ return {
             'lua',
             'c',
             'java',
+            'glsl',
+            'javascript',
+            'typescript',
         })
     end,
 }
