@@ -13,8 +13,13 @@ set.autoindent = true
 set.smarttab = true
 set.preserveindent = true
 
+-- folding settings
+set.foldmethod = 'expr'
+set.foldenable = false
+
 -- sets margin below cursor when scrolling
 set.scrolloff = 12
+set.sidescrolloff = 20
 
 -- turn off line wrap
 set.wrap = false

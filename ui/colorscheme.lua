@@ -13,6 +13,13 @@ return {
             code_style = {
                 comments = 'none',
             },
+
+            highlights = {
+                GitBranch = { fg = '$blue' },
+                GitAdded = { fg = '$green' },
+                GitChanged = { fg = '$yellow' },
+                GitRemoved = { fg = '$red' },
+            }
         })
 
         require("onedark").load()
