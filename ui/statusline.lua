@@ -3,7 +3,7 @@ local function new_git_section(args)
 
     ---@type Gitsigns.StatusObj
     local git = vim.b.gitsigns_status_dict
-    if not git then return "" end
+    if not git then return '' end
 
     local branch = '%#GitBranch#%#MiniStatuslineDevinfo# ' .. git.head
     local added = (git.added or 0) > 0 and '%#GitAdded#+' .. git.added .. ' ' or ''
@@ -49,15 +49,28 @@ return {
                     local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
                     local location      = MiniStatusline.section_location({ trunc_width = 75 })
 
+                    local separator_hl  = git ~= '' and 'MiniStatuslineDevinfo' or 'MiniStatuslineFilename'
+
                     return MiniStatusline.combine_groups({
                         { hl = mode_hl,                  strings = { mode } },
-                        { hl = 'MiniStatuslineDevinfo',  strings = { '' } },
+                        { hl = separator_hl,             strings = { nil } },
                         { strings = { git, diagnostics } },
                         '%<',
                         { hl = 'MiniStatuslineFilename', strings = { filename } },
                         '%=',
                         { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
                         { hl = mode_hl,                  strings = { search, location } },
+                    })
+                end,
+
+                inactive = function ()
+                    local git           = new_git_section({ trunc_width = 40 })
+                    local filename      = vim.fn.expand('%:.')
+
+                    return MiniStatusline.combine_groups({
+                        { strings = { git } },
+                        '%<',
+                        { hl = 'MiniStatuslineFilename', strings = { filename } },
                     })
                 end
             },
