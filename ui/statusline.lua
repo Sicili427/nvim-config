@@ -31,7 +31,7 @@ end
 
 ---@type LazyPluginSpec
 return {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.statusline",
     dependencies = {
         'nvim-tree/nvim-web-devicons',
         'lewis6991/gitsigns.nvim',

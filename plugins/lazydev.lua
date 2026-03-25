@@ -7,6 +7,7 @@ return {
             { path = 'lazy.nvim', words = { 'LazyPluginSpec', 'LazySpec', } },
             { path = 'lazydev.nvim', words = { 'lazydev', } },
             { path = 'gitsigns.nvim', words = { 'Gitsigns', 'gitsigns', } },
+            { path = 'neo-tree.nvim', words = { 'neo-tree', 'neotree', } },
         }
     },
 }

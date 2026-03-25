@@ -23,3 +23,9 @@ set.sidescrolloff = 20
 
 -- turn off line wrap
 set.wrap = false
+
+-- diagnostic config
+---@type vim.diagnostic.Opts
+vim.diagnostic.config({
+    virtual_text = true,
+})
