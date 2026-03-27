@@ -19,9 +19,9 @@ local function new_diff_section(args)
 
     local string_arr = {}
 
-    if (git.added or 0) > 0 then table.insert(string_arr, '%#GitAdded#+' .. git.added .. '%#MiniStatuslineDevinfo#') end
-    if (git.changed or 0) > 0 then table.insert(string_arr, '%#GitChanged#~' .. git.changed .. '%#MiniStatuslineDevinfo#') end
-    if (git.removed or 0) > 0 then table.insert(string_arr, '%#GitRemoved#-' .. git.removed .. '%#MiniStatuslineDevinfo#') end
+    if (git.added or 0) > 0 then table.insert(string_arr, '%#DiffAdded#+' .. git.added .. '%#MiniStatuslineDevinfo#') end
+    if (git.changed or 0) > 0 then table.insert(string_arr, '%#DiffChanged#~' .. git.changed .. '%#MiniStatuslineDevinfo#') end
+    if (git.removed or 0) > 0 then table.insert(string_arr, '%#DiffRemoved#-' .. git.removed .. '%#MiniStatuslineDevinfo#') end
 
     return #string_arr > 0 and ' ' .. table.concat(string_arr, ' ') or ''
 end

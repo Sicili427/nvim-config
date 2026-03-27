@@ -15,10 +15,7 @@ return {
             },
 
             highlights = {
-                GitBranch = { fg = '$blue' },
-                GitAdded = { fg = '$green' },
-                GitChanged = { fg = '$yellow' },
-                GitRemoved = { fg = '$red' },
+                GitBranch = { fg = '$purple' },
             }
         })
 
