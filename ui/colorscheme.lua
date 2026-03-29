@@ -7,7 +7,7 @@ return {
             style = "warmer",
             colors = {
                 fg = "#e6e6e6",
-                bg0 = "#1F1F1F",
+                bg0 = "#141414",
             },
 
             code_style = {
@@ -15,7 +15,8 @@ return {
             },
 
             highlights = {
-                GitBranch = { fg = '$purple' },
+                MiniStatuslineFilename = { bg = '$bg0' },
+                GitBranch = { fg = '$purple', bg = '$bg2' },
             }
         })
 

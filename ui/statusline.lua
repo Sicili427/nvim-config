@@ -26,7 +26,7 @@ local function new_diff_section(args)
     return #string_arr > 0 and ' ' .. table.concat(string_arr, ' ') or ''
 end
 
-local function new_diagnostics(args)
+local function new_diagnostics_section(args)
     if MiniStatusline.is_truncated(args.trunc_width) then return '' end
 
     local counts = vim.diagnostic.count(0)
@@ -38,6 +38,12 @@ local function new_diagnostics(args)
 
     return ' '.. (errors > 0 and '%#DiagnosticError#E' .. errors .. ' ' or '')
     .. (warnings > 0 and '%#DiagnosticWarn#W' .. warnings .. ' ' or '')
+end
+
+local function new_location_section(args)
+    if MiniStatusline.is_truncated(args.trunc_width) then return '' end
+
+    return '%l:%v'
 end
 
 local make_color = function(hl_fg, hl_bg)
@@ -114,22 +120,22 @@ return {
                     local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
                     local git           = new_git_section({ trunc_width = 40 })
                     local diff          = new_diff_section({ trunc_width = 75 })
-                    local diagnostics   = new_diagnostics({ trunc_width = 75 })
+                    local diagnostics   = new_diagnostics_section({ trunc_width = 75 })
                     local lsp           = MiniStatusline.section_lsp({ trunc_width = 75 })
                     local filename      = vim.fn.expand('%:.')
                     local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-                    local location      = MiniStatusline.section_location({ trunc_width = 75 })
+                    local location      = new_location_section({ trunc_width = 40 })
 
                     local tab = {
                         { hl = mode_hl .. '2', strings = { '█' } },
                         { hl = mode_hl, strings = { mode } },
-                        { hl = mode_hl .. '2', strings = { '█' } },
+                        { hl = mode_hl .. '2', strings = { '█' } },
                     }
 
                     if (git .. diff .. diagnostics .. lsp):len() > 0 then
-                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                         table.insert(tab, { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } } )
-                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                     end
 
                     table.insert(tab, '%<')
@@ -139,12 +145,12 @@ return {
                     table.insert(tab, '%=')
 
                     if fileinfo:len() > 0 then
-                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                         table.insert(tab, { hl = 'MiniStatuslineDevinfo', strings = { fileinfo } } )
-                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                     end
 
-                    table.insert(tab, { hl = mode_hl .. '2', strings = { '█' } } )
+                    table.insert(tab, { hl = mode_hl .. '2', strings = { '█' } } )
                     table.insert(tab, { hl = mode_hl, strings = { location } } )
                     table.insert(tab, { hl = mode_hl .. '2', strings = { '█' } } )
 
@@ -155,11 +161,19 @@ return {
                     local git           = new_git_section({ trunc_width = 40 })
                     local filename      = vim.fn.expand('%:.')
 
-                    return MiniStatusline.combine_groups({
-                        { strings = { git } },
-                        '%<',
-                        { hl = 'MiniStatuslineFilename', strings = { filename } },
-                    })
+                    local tab = {}
+
+                    if git:len() > 0 then
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo', strings = { git } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                    end
+
+                    table.insert(tab, '%<')
+
+                    table.insert(tab, { hl = 'MiniStatuslineFilename', strings = { ' ' .. filename .. ' ' } })
+
+                    return combine_groups(tab)
                 end
             },
         })

@@ -27,9 +27,7 @@ set.wrap = false
 -- diagnostic config
 ---@type vim.diagnostic.Opts
 vim.diagnostic.config({
-    virtual_text = {
-        virt_text_pos = 'eol_right_align',
-    },
+    virtual_text = true,
     underline = false,
     update_in_insert = false
 })
