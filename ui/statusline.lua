@@ -30,14 +30,15 @@ local function new_diagnostics_section(args)
     if MiniStatusline.is_truncated(args.trunc_width) then return '' end
 
     local counts = vim.diagnostic.count(0)
+    local string_arr = {}
 
     local errors = counts[vim.diagnostic.severity.ERROR] or 0
     local warnings = counts[vim.diagnostic.severity.WARN] or 0
 
-    if errors == 0 and warnings == 0 then return '' end
+    if (errors > 0) then table.insert(string_arr, '%#DiagnosticError#E' .. errors .. '%#MiniStatuslineDevinfo#') end
+    if (warnings > 0) then table.insert(string_arr, '%#DiagnosticWarn#W' .. warnings .. '%#MiniStatuslineDevinfo#') end
 
-    return ' '.. (errors > 0 and '%#DiagnosticError#E' .. errors .. ' ' or '')
-    .. (warnings > 0 and '%#DiagnosticWarn#W' .. warnings .. ' ' or '')
+    return #string_arr > 0 and ' '.. table.concat(string_arr, ' ') or ''
 end
 
 local function new_location_section(args)
@@ -164,7 +165,7 @@ return {
                     local tab = {}
 
                     if git:len() > 0 then
-                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
+                        table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                         table.insert(tab, { hl = 'MiniStatuslineDevinfo', strings = { git } } )
                         table.insert(tab, { hl = 'MiniStatuslineDevinfo2', strings = { '█' } } )
                     end
