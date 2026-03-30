@@ -23,6 +23,7 @@ set.sidescrolloff = 20
 
 -- turn off line wrap
 -- set.wrap = false
+vim.cmd("set formatoptions-=c")
 
 -- diagnostic config
 ---@type vim.diagnostic.Opts
