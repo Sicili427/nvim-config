@@ -17,6 +17,21 @@ return {
                 expander_highlight = "NeoTreeExpander",
             },
         },
+        filesystem = {
+            window = {
+                mappings = {
+                    ['<cr>'] = function (state)
+                        local node = state.tree:get_node()
+                        if (node.type == 'file') then
+                            require('neo-tree.sources.common.commands').open(state);
+                            require('neo-tree.command').execute({ action = 'focus' })
+                        else
+                            state.commands['open'](state)
+                        end
+                    end
+                }
+            }
+        }
     },
     lazy = false,
 }
