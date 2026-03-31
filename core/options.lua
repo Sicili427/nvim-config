@@ -22,12 +22,12 @@ set.scrolloff = 12
 set.sidescrolloff = 20
 
 -- turn off line wrap
--- set.wrap = false
+set.wrap = false
 
 -- diagnostic config
 ---@type vim.diagnostic.Opts
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_lines = { current_line = true },
     underline = false,
     update_in_insert = false
 })

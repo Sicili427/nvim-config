@@ -13,8 +13,8 @@ map('n', '<leader>nh', ':noh<CR>', { desc = '[N]o [H]ighlight' })
 
 -- LSP Keymaps
 map("n", "<leader>of", function() vim.diagnostic.open_float() end, { desc = "[O]pen [F]loat"})
-map("n", "[d", function() vim.lsp.diagnostic.goto_prev() end, { desc = "Go to previous diagnostic"})
-map("n", "]d", function() vim.lsp.diagnostic.goto_next() end, { desc = "Go to next diagnostic"})
+map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "Go to previous diagnostic"})
+map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "Go to next diagnostic"})
 
 -- Telescope Keymaps
 local telescope = require('telescope.builtin')
