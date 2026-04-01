@@ -27,7 +27,28 @@ set.wrap = false
 -- diagnostic config
 ---@type vim.diagnostic.Opts
 vim.diagnostic.config({
-    virtual_lines = { current_line = true },
+    virtual_text = true;
     underline = false,
     update_in_insert = false
 })
+
+-- clipboard config
+set.clipboard = 'unnamedplus'
+
+if vim.fn.has('wsl') == 1 then
+    vim.g.clipboard = {
+        name = 'WslClipboard',
+        copy = {
+            ['+'] = 'clip.exe',
+            ['*'] = 'clip.exe',
+        },
+        paste = {
+            ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
+
+    vim.keymap.set({"n", "v"}, "y", '"+y', { noremap = true, silent = true })
+    vim.keymap.set({"n", "v"}, "p", '"+p', { noremap = true, silent = true })
+end
