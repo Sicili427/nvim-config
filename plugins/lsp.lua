@@ -1,3 +1,7 @@
+vim.lsp.config('jdtls', {
+    root_markers = {  '.root', 'mvnw', 'gradlew', 'settings.gradle', 'settings.gradle.kts', '.git', 'build.xml', 'pom.xml', 'build.gradle', 'build.gradle.kts' }
+})
+
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
