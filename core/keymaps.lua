@@ -8,7 +8,7 @@ local function map(mode, key, cmd, opts)
 end
 
 -- Neovim Keymaps
-map('i', "jj", "<Esc>l", { desc = "Exit normal mode"})
+map('i', "jk", "<Esc>l", { desc = "Exit normal mode"})
 map('n', '<leader>nh', ':noh<CR>', { desc = '[N]o [H]ighlight' })
 
 -- LSP Keymaps
