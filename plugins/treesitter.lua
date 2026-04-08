@@ -12,16 +12,14 @@ return {
             },
         },
     },
-    config = function()
-        local ts = require("nvim-treesitter")
-
-        ts.install({
-            'lua',
+    opts = {
+        ensure_installed = {
             'c',
+            'lua',
             'java',
-            'glsl',
             'javascript',
             'typescript',
-        })
-    end,
+            'glsl',
+        },
+    },
 }
