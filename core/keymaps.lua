@@ -20,8 +20,9 @@ map('n', '<leader>fb', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = '[F]ormat C
 -- Telescope Keymaps
 local telescope = require('telescope.builtin')
 
-map('n', '<leader>ff', telescope.find_files, { desc = '[F]ind [F]iles' })
-map('n', '<leader>lg', telescope.live_grep, { desc = '[L]ive [G]rep' })
+map('n', '<leader>tff', telescope.find_files, { desc = '[F]ind [F]iles' })
+map('n', '<leader>tlg', telescope.live_grep, { desc = '[L]ive [G]rep' })
+map('n', '<leader>tbf', telescope.current_buffer_fuzzy_find, { desc = '[B]uffer [F]ind' })
 
 
 -- Neotree Keymaps

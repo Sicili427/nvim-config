@@ -9,6 +9,10 @@ vim.lsp.config('jdtls', {
     },
 })
 
+vim.lsp.config('clangd', {
+    root_markers = { '.root', ".clangd", ".clang-tidy", ".clang-format", "compile_commands.json", "compile_flags.txt", "configure.ac", ".git" },
+})
+
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
