@@ -1,4 +1,4 @@
-local set = vim.o
+local set = vim.opt
 
 -- line number options
 set.number = true
@@ -14,6 +14,7 @@ set.smarttab = true
 set.preserveindent = true
 
 -- folding settings
+set.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 set.foldmethod = 'expr'
 set.foldenable = false
 
