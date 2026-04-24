@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 ---@type LazyPluginSpec
 return {
-    "nvim-mini/mini.statusline",
+    "nvim-mini/mini.nvim",
     dependencies = {
         'nvim-tree/nvim-web-devicons',
         'lewis6991/gitsigns.nvim',
