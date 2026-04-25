@@ -20,6 +20,7 @@ return {
             'javascript',
             'typescript',
             'glsl',
+            'tmux',
         },
     },
 }

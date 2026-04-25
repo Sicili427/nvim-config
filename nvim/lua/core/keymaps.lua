@@ -31,3 +31,10 @@ map('n', '<leader>be', ':Neotree buffers toggle<CR>', { desc = 'Toggle Buffers' 
 map('n', '<leader>ge', ':Neotree float git_status toggle<CR>', { desc = 'Toggle Git Status' })
 
 map('n', '<leader>E', ':Neotree reveal toggle<CR>', { desc = 'Toggle Explorer and Reveal File' })
+
+-- Vim-TMUX-Navigator Keymaps
+map('n', '<M-h>', ':TmuxNavigateLeft<CR>')
+map('n', '<M-j>', ':TmuxNavigateDown<CR>')
+map('n', '<M-k>', ':TmuxNavigateUp<CR>')
+map('n', '<M-l>', ':TmuxNavigateRight<CR>')
+

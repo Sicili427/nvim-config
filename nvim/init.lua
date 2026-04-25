@@ -20,6 +20,6 @@ require("core.options")
 
 ------- Enable Treesitter Highlighting -------
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua', 'c', 'java', 'javascript', 'jsx', 'typescript', 'glsl', },
+  pattern = { 'lua', 'c', 'java', 'javascript', 'jsx', 'typescript', 'glsl', 'tmux', },
   callback = function() vim.treesitter.start() end,
 })

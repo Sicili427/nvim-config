@@ -33,6 +33,13 @@ vim.diagnostic.config({
     update_in_insert = false
 })
 
+-- filetype config
+vim.filetype.add({
+    extension = {
+        tmux = 'tmux',
+    }
+})
+
 -- clipboard config
 set.clipboard = 'unnamedplus'
 
